@@ -1,0 +1,44 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "T-shirt",
+            "desc": "Desciption T-shirt ...",
+            "price": 200,
+            "sale_price": 100,
+            "status": 0
+        },
+        {
+            "id": 2,
+            "name": "Cardigan",
+            "desc": "Desciption Cardigan ...",
+            "price": 380,
+            "sale_price": 210,
+            "status": 0
+        },
+        {
+            "id": 3,
+            "name": "Dress",
+            "desc": "Desciption Dress ...",
+            "price": 270,
+            "sale_price": 220,
+            "status": 1
+        },
+        {
+            "id": 4,
+            "name": "Vest",
+            "desc": "Desciption Vest ...",
+            "price": 520,
+            "sale_price": 480,
+            "status": 0
+        },
+        {
+            "id": 5,
+            "name": "Shoes",
+            "desc": "Desciption Shoes ...",
+            "price": 120,
+            "sale_price": 100,
+            "status": 1
+        }
+    ]
+}
