@@ -1,20 +1,48 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// In App.js in a new project
+import { useState, useEffect } from 'react';
+import { View, Text, FlatList } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function App() {
+const Products = () => {
+  const [list, setList] = useState([]);
+
+  useEffect(() => {
+    fetch('https://10.0.2.2:3000/products')
+      .then(res => res.json())
+      .then(data => setList(data.products))
+      .catch((errors) => {
+        throw errors
+      })
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <FlatList 
+    data={list}
+    renderItem={({item}) => 
+      <View>
+          <Text>{item.name}</Text>
+          <Text>{item.desc}</Text>
+          <Text>{item.price}</Text>
+      </View>
+  }
+  keyExtractor={(item) => item.id}
+  />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Stack = createNativeStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen 
+        name="Products" 
+        component={Products} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App;
